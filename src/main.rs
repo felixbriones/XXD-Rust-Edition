@@ -2,6 +2,7 @@
 // import self: import allows us to refer to the module itself
 // import BufRead: import allows us read from buffered source
 use std::io::{self, BufRead};
+use hex::encode;
 
 fn main()
 {
@@ -18,6 +19,7 @@ fn main()
     {
         // unwrap extracts the string value if operation succeeds
         let line = line.unwrap();
-        println!("Ouput: {}", line);
+        let hex = encode(line);
+        println!("Ouput: {}", hex);
     }
 }

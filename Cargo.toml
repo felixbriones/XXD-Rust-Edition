@@ -1,0 +1,14 @@
+[package]
+name = "xxd_re"
+version = "0.1.0"
+edition = "2021"
+description = "My Rust-based XXD clone"
+authors = ["Felix Briones <f.briones562@gmail.com"]
+
+# Cmd to create new project: cargo new (name of project)
+# Build crate and compile: cargo build
+# Place cargos here
+[dependencies]
+memoffset = "0.9.1" # offset_of functionality for Rust
+hex = "0.4.3" 	    # hex conversion functionality
+
