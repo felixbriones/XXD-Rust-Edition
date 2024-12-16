@@ -63,9 +63,19 @@ fn main()
             }
         }
 
-        println!("");
+        // Add an extra space between the byte and ASCII columns
+        print!(" ");
+
+        // Print hex data's ASCII representation
+        for &bytes in &buffer[..bytesRead]
+        {
+            // print byte data as a char
+            print!("{}", bytes as char);
+        }
+
         // Update offset
         offset += bytesRead;
 
+        println!("");
     }
 }
