@@ -4,6 +4,7 @@ use std::io;
 
 // Equivalent of a macro in C
 const BYTES_PER_LINE: usize = 16;
+const HEX_BYTES_SPACING: usize = 2;
 
 fn main()
 {
@@ -43,12 +44,26 @@ fn main()
         for i in 0..bytesRead
         {
             print!("{:02x}", buffer[i]);
-            if i % 2 == 1
+            // Add a space after every 2 bytes for readability and to mimic XXD
+            if i % HEX_BYTES_SPACING == 1
             {
                 print!(" ");
             }
         }
 
+        // if fewer than 16 bytes were printed on this line, use spaces to pad
+        for i in bytesRead..BYTES_PER_LINE
+        {
+            // Add spacing for a byte
+            print!("  ");
+            if i % HEX_BYTES_SPACING == 1
+            {
+                // Account for the space added every 2 bytes
+                print!(" ");
+            }
+        }
+
+        println!("");
         // Update offset
         offset += bytesRead;
 
